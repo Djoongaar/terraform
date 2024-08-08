@@ -1,0 +1,11 @@
+services:
+  terraform:
+    build:
+      context: .
+      args:
+        - REGISTRY_USER=${REGISTRY_USER}
+        - REGISTRY_TOKEN=${REGISTRY_TOKEN}
+        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+        - AWS_REGION=${AWS_REGION}
+    image: ghcr.io/djoongaar/terraform
