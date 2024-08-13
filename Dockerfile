@@ -14,6 +14,8 @@ ENV AWS_REGION ${AWS_REGION}
 
 COPY aws.pub .
 
+#TODO: explicitly determine versions of next packages: jq, terraform, aws, ansible
+
 RUN set -ex; \
   apt-get update; \
   apt-get install -y --reinstall ca-certificates; \
@@ -22,6 +24,7 @@ RUN set -ex; \
     dnf \
     gpg \
     gpg-agent \
+    jq \
     lsb-release \
     libc6-dev \
     libc6-dbg \
@@ -43,7 +46,7 @@ RUN set -ex; \
   rm -rf awscliv2.sig && \
   rm -rf aws.pub && \
   ./aws/install && \
-  /usr/local/bin/aws --version; \
+  aws --version; \
   ansible --version;
 
 RUN set -ex; \
