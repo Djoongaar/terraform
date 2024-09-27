@@ -36,7 +36,7 @@ RUN set -ex; \
   wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg; \
   echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list; \
   apt update && apt install -y terraform python3-pip; \
-  python3 -m pip install --break-system-packages ansible-core; \
+  python3 -m pip install --break-system-packages ansible-core passlib; \
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"     -o "awscliv2.zip"; \
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig" -o "awscliv2.sig"; \
   gpg --import aws.pub; \
@@ -52,7 +52,7 @@ RUN set -ex; \
 RUN set -ex; \
     mkdir -p /root/.ssh; \
     touch /root/.ssh/config; \
-    echo "User admin" >> /root/.ssh/config; \
+    echo "User ubuntu" >> /root/.ssh/config; \
     echo "StrictHostKeyChecking=accept-new" >> /root/.ssh/config;
 
 WORKDIR code

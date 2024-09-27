@@ -1,5 +1,7 @@
 services:
   terraform:
+    env_file:
+      - .env
     build:
       context: .
       args:
